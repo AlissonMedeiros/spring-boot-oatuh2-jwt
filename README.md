@@ -82,12 +82,17 @@ curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=refresh_token -d r
 
 * authorization_code
 
-`http://localhost:8080/oauth/authorize?response_type=code&client_id=acme&redirect_uri=https://www.google.com.br` `https://www.google.com.br/?code=Axjz0f`
+Access this url to get a Code (you need to get the code in the response):
 
-`code``/oauth/token -d grant_type=authorization_code``accesstoken`
+`http://localhost:8080/oauth/authorize?response_type=code&client_id=acme&redirect_uri=https://www.google.com.br` 
 
-```
-curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=https://www.google.com.br -d code=Axjz0f
+The response is like this:
+
+`https://www.google.com.br/?code=Axjz0f`
+
+Replace the code:
+
+curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=https://www.google.com.br -d code={NEW_CODE}
 {"access_token":"eyJhb...
 ```
 
@@ -119,7 +124,7 @@ curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=client_credentials
 http://localhost:8080/oauth/authorize?response_type=code&client_id=acme&redirect_uri=https://www.google.com.br
 ```
 
-`http://notes.coding.me/?code=8JsYwV`，`code`accesstoken
+`https://www.google.com.br/?code=8JsYwV`，`code`accesstoken
 
 ```
 $ curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=https://www.google.com.br -d code=8JsYwV
