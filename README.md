@@ -1,5 +1,7 @@
 # spring-boot-oauth2-jwt
 
+[![CircleCI](https://circleci.com/gh/AlissonMedeiros/spring-boot-oatuh2-jwt/tree/master.svg?style=svg)](https://circleci.com/gh/AlissonMedeiros/spring-boot-oatuh2-jwt/tree/master)
+
 ### OAuth2 Server
 
 Generate JWT Key
