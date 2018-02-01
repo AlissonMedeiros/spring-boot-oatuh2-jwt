@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
@@ -60,7 +59,7 @@ public class AuthServerApplication {
                     clientDetails.setScope(Collections.singleton("openid"));
                     clientDetails.setAuthorities(authorities);
                     clientDetails.setAuthorizedGrantTypes(authoritiedGrantTypes);
-                    clientDetails.setRegisteredRedirectUri(Collections.singleton("http://notes.coding.me"));
+                    clientDetails.setRegisteredRedirectUri(Collections.singleton("https://www.google.com.br"));
                     jdbcClientDetailsService.addClientDetails(clientDetails);
                 }
 
