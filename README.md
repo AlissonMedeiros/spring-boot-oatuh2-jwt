@@ -76,7 +76,7 @@ return: {"access_token":"eyJ...
 `access_token` `refresh_token`，`refresh_token``/oauth/token -d grant_type=refresh_token -d refresh_token``accesstoken`
 
 ```
-curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=refresh_token -d refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJ1c2VyIiwic2NvcGUiOlsib3BlbmlkIl0sImF0aSI6IjQ3NTYwMTc3LWVhODMtNGY3OS04Y2E3LWViMjBhNjAzY2VmZSIsImV4cCI6MTQ5ODgxMTY2OCwiYXV0aG9yaXRpZXMiOlsiUkVBRCJdLCJqdGkiOiI5MzExOTZjOS03NGU2LTQ3ZDUtYjA3MC0xMGNhYzg2NjUzZTAiLCJjbGllbnRfaWQiOiJhY21lIn0.aQqsdkQfCy4L4FjV6TZyRehG6ZjgmuWe-30uuco-g5GKmuxJGEoY6dYOiDhsTOgKoxDXJwN6kACZMePInP4cXrExK6N7n25MbUXn-IxPGb1TTy3YmcaVwLM-oP2IW-dxzYLjmT3XYgA8Xt4vY2z8trzkvR2jefP-cHP0uQq7jFjDVYSq37epJozPNYWd_630jWokjbOQr3MwMcsLjmUz8eUmMm8I7Ln1XM2RFlmw09_eFLk0FNtwuWd-IFXsjPc_2jaNASJYEfurNlTN8OH7LKe34enDZoPgpbsMxUUsF3EW9iq2NwnV9btEPqe-a-wJDCftXvV7GxmOKxdg--X2zw
+curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=refresh_token -d refresh_token=${TOKEN}
 return: {"access_token":"eyJ...
 ```
 

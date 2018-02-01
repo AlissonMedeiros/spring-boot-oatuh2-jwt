@@ -35,10 +35,12 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        JdbcUserDetailsManager userDetailsService = new JdbcUserDetailsManager();
+        userDetailsService.setDataSource(dataSource);
         endpoints.tokenStore(tokenStore())
                 .tokenEnhancer(jwtTokenEnhancer())
                 .authenticationManager(authenticationManager)
-                .userDetailsService(new JdbcUserDetailsManager());
+                .userDetailsService(userDetailsService);
     }
 
     @Autowired
