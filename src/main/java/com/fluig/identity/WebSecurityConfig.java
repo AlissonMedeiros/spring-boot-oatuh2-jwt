@@ -1,5 +1,8 @@
 package com.fluig.identity;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     @Bean
@@ -26,13 +32,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("user")
-            .password("user")
-            .authorities("READ")
-            .and()
-            .withUser("admin")
-            .password("admin")
-            .authorities("READ", "WRITE");
+        auth.jdbcAuthentication()
+                .dataSource(dataSource);
     }
 }
