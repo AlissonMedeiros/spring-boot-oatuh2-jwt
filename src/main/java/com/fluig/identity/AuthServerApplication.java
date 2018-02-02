@@ -10,6 +10,8 @@ import javax.sql.DataSource;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,11 +26,16 @@ import com.google.common.collect.Lists;
 
 @RestController
 @SpringBootApplication
-public class AuthServerApplication {
+public class AuthServerApplication extends SpringBootServletInitializer {
 
     @RequestMapping("/user")
     public Principal user(Principal user) {
         return user;
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(AuthServerApplication.class);
     }
 
     public static void main(String[] args) {
