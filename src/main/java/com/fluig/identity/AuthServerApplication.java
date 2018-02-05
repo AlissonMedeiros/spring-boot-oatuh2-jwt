@@ -57,6 +57,18 @@ public class AuthServerApplication extends SpringBootServletInitializer {
                 if(!jdbcUserDetailsManager.userExists("admin")) {
                     jdbcUserDetailsManager.createUser(new User("admin", "admin", Lists.newArrayList(new SimpleGrantedAuthority("READ"), new SimpleGrantedAuthority("WRITE"))));
                 }
+                if(!jdbcUserDetailsManager.userExists("user1")) {
+                    for (int i = 1; i <= 1000; i++) {
+                        if (i % 2 == 0) {
+                            jdbcUserDetailsManager.createUser(new User("user" + String.valueOf(i), "user" + String.valueOf(i), Lists.newArrayList(new SimpleGrantedAuthority("READ"))));
+                        } else {
+                            jdbcUserDetailsManager.createUser(new User("user" + String.valueOf(i), "user" + String.valueOf(i), Lists.newArrayList(new SimpleGrantedAuthority("READ"), new SimpleGrantedAuthority("WRITE"))));
+                        }
+                    }
+                }
+                if(!jdbcUserDetailsManager.userExists("wcmadmin")) {
+                    jdbcUserDetailsManager.createUser(new User("wcmadmin", "adm", Lists.newArrayList(new SimpleGrantedAuthority("READ"), new SimpleGrantedAuthority("WRITE"))));
+                }
                 if(jdbcClientDetailsService.listClientDetails().isEmpty()) {
                     Collection<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("READ"), new SimpleGrantedAuthority("WRITE"));
                     Collection<String> authoritiedGrantTypes = Arrays.asList("implicit", "refresh_token", "password", "authorization_code", "client_credentials");
